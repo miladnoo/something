@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Snowman — Blender 5.2 LTS Viewer</title>
+    <style>
+      :root {
+        color-scheme: dark;
+      }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        height: 100%;
+        overflow: hidden;
+        background: #0a0e1a;
+        font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+        color: #e8ecf4;
+      }
+      #app {
+        position: fixed;
+        inset: 0;
+      }
+      canvas {
+        display: block;
+      }
+      .overlay {
+        position: fixed;
+        z-index: 10;
+        pointer-events: none;
+      }
+      .hud {
+        top: 24px;
+        left: 28px;
+      }
+      .hud h1 {
+        font-size: 22px;
+        font-weight: 700;
+        letter-spacing: 0.02em;
+      }
+      .hud p {
+        margin-top: 6px;
+        font-size: 13px;
+        color: #8b93a7;
+      }
+      .hud .badge {
+        display: inline-block;
+        margin-top: 10px;
+        padding: 4px 10px;
+        border-radius: 999px;
+        border: 1px solid rgba(120, 200, 255, 0.35);
+        background: rgba(70, 150, 220, 0.12);
+        color: #9fd4ff;
+        font-size: 11px;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+      }
+      .hint {
+        bottom: 24px;
+        left: 28px;
+        font-size: 12px;
+        color: #6b7386;
+      }
+      .links {
+        bottom: 24px;
+        right: 28px;
+        pointer-events: auto;
+      }
+      .links a {
+        color: #9fd4ff;
+        font-size: 12px;
+        text-decoration: none;
+        border: 1px solid rgba(120, 200, 255, 0.25);
+        padding: 6px 12px;
+        border-radius: 8px;
+        background: rgba(70, 150, 220, 0.08);
+        transition: background 0.15s ease;
+      }
+      .links a:hover {
+        background: rgba(70, 150, 220, 0.2);
+      }
+      .status {
+        position: fixed;
+        inset: 0;
+        z-index: 20;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #0a0e1a;
+        font-size: 14px;
+        color: #8b93a7;
+        transition: opacity 0.4s ease;
+      }
+      .status.hidden {
+        opacity: 0;
+        pointer-events: none;
+      }
+      .status.error {
+        color: #ff8f8f;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app"></div>
+    <div class="overlay hud">
+      <h1>Snowman</h1>
+      <p>Procedural model · built headlessly with Python</p>
+      <span class="badge">Blender 5.2.2 LTS</span>
+    </div>
+    <div class="overlay hint">drag to orbit · scroll to zoom · right-drag to pan</div>
+    <div class="overlay links"><a href="/blender-render.png" target="_blank">Cycles render ↗</a></div>
+    <div class="status" id="status">loading snowman.glb…</div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
